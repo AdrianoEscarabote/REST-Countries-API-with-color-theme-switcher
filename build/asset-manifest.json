@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/static/js/main.b158ebf5.js",
+    "index.html": "/index.html",
+    "static/media/moon-solid.svg": "/static/media/moon-solid.31dce64e377cc770c0ee812a62e6b74d.svg",
+    "static/media/icon-search.svg": "/static/media/icon-search.56067c158129f61042faa47e1521929c.svg",
+    "main.b158ebf5.js.map": "/static/js/main.b158ebf5.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.b158ebf5.js"
+  ]
+}
