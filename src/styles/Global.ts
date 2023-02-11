@@ -1,6 +1,11 @@
 import { createGlobalStyle } from "styled-components";
 
-export const GlobalStyle = createGlobalStyle`
+export interface DefaultTheme {
+  body: string,
+  text: string
+}
+
+export const GlobalStyle = createGlobalStyle<{ theme: DefaultTheme }>`
 /* Remove default margin */
 body,
 h1,
@@ -80,7 +85,8 @@ select {
 }
 
 body {
-  background: #FAFAFA;
+  background: ${({ theme }) => theme.body};
+  color: ${({ theme }) => theme.text};
 }
 
 .sr-only {

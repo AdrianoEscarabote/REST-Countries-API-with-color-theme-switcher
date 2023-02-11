@@ -2,16 +2,16 @@ import styled from "styled-components";
 import iconMoon from "../assets/moon-solid.svg";
 
 export const HeaderStyled = styled.header`
-  background-color: #FFFFFF;
+  background-color: ${({ theme }) => theme.headerCountryBackground};
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0562443);
+  box-shadow: ${({ theme }) => theme.headerShadow};
 
   .container {
     width: 100%;
     max-width: 1440px;
-    padding: 20px 60px;
+    padding: 20px 80px;
     display: flex;
     justify-content: space-between;
 
@@ -19,7 +19,6 @@ export const HeaderStyled = styled.header`
       font-weight: 800;
       font-size: 24px;
       line-height: 33px;
-      color: #111517;
     }
 
     button {
@@ -29,7 +28,13 @@ export const HeaderStyled = styled.header`
       width: 108px;
       height: 22px;
       text-align: right;
-      background: url(${iconMoon}) no-repeat left;
+      background: url(${({ theme }) => theme.imgIconTheme}) no-repeat left;
+    }
+  }
+
+  @media (max-width: 864px) {
+    .container {
+      padding: 20px 30px;
     }
   }
 `

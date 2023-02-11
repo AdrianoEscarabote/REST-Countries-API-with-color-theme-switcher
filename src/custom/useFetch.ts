@@ -22,5 +22,19 @@ export default function useFetch(url: string) {
     })
   }, [url])
 
-  return { data, loading, error }
+  const refetch = (urlRegion: string) => {
+    setLoading(true)
+    axios
+    .get(urlRegion)
+    .then((response) => {
+      setData(response.data)
+    })
+    .catch((err) => {
+      setError(err)
+    })
+    .finally(() => {
+      setLoading(false)
+    })
+  }
+  return { data, loading, error, refetch}
 }

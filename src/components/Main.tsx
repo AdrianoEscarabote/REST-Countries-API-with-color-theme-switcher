@@ -1,7 +1,8 @@
-import { useEffect, useState, DetailedHTMLProps, HTMLAttributes } from "react";
 import { MainStyled } from "../styles/MainStyled";
 import Country from "./Country";
 import useFetch from "../custom/useFetch";
+import { Routes, Route } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 
 interface Data {
   name: {common: string},
@@ -10,28 +11,64 @@ interface Data {
   capital: string,  
   population: string,
   index: number
-}
+};
 
 export const Main = () => {
 
-  let objData: Data[] = []
-    
-  const {data, loading, error} = useFetch("https://restcountries.com/v3.1/all");
+  const effectRan = useRef(false);
 
+  let objData: Data[] = [];
+    
+  const {data, loading, error, refetch} = useFetch("https://restcountries.com/v3.1/all");
+  
+  const [urlRegion, setUrlRegion] = useState("");
+
+  useEffect(() => {
+    if (effectRan.current === true) {
+      try {
+        if (urlRegion === "") {
+          refetch("https://restcountries.com/v3.1/all")
+        } else {
+          refetch(`https://restcountries.com/v3.1/region/${urlRegion}`);
+        }
+      } catch (e) {
+        console.log(e)
+      }
+    }
+    return () => {
+      effectRan.current = true;
+    }
+  }, [urlRegion]);
+
+  const [urlNameFilter, setUrlNameFilter] = useState("")
+
+  useEffect(() => {
+    if (effectRan.current === true) {
+      console.log(urlNameFilter)
+      refetch(`https://restcountries.com/v3.1/name/${urlNameFilter}`)
+    } 
+    return () => {
+      effectRan.current = true;
+    }
+  }, [urlNameFilter]);
+    
   if (loading !== true) {
     objData = data
-    console.log(objData)
   } 
   if (error) return <h1>{error}</h1>
-  
+
   return (
     <MainStyled>
       <div className="container">
         <form noValidate>
           <label htmlFor="name" aria-label="Enter the name of the city you want to find">
-            <input type="text" name="name" placeholder="Search for a country…" id="name"/>  
+            <input type="text" value={urlNameFilter} onChange={(e) => {
+              setUrlNameFilter(e.currentTarget.value)
+            }} name="name" placeholder="Search for a country…" id="name"/>  
           </label>
-          <select name="cars" id="cars">
+          <select onChange={(e) => {
+            setUrlRegion(e.currentTarget.selectedOptions[0].value)
+          }}>
             <option defaultValue={"Filter by Region"} style={{display: "none"}}>Filter by Region</option>
             <option value="Africa">Africa</option>
             <option value="America">America</option>
@@ -48,4 +85,4 @@ export const Main = () => {
       </div>
     </MainStyled>
   )
-}              
+};              
