@@ -21,6 +21,7 @@ justify-content: center;
       width: 480px;
       height: 56px;
       box-shadow: ${({ theme }) => theme.inputShadow};
+      color: ${({ theme }) => theme.text};
       border-radius: 5px;
       outline: transparent; 
       font-weight: 400;
@@ -32,6 +33,7 @@ justify-content: center;
     }
     
     select {
+      color: ${({ theme }) => theme.text};
       width: 100%;
       max-width: 200px;
       height: 56px;
@@ -49,6 +51,10 @@ justify-content: center;
     justify-content: space-between;
     padding: 0px;
   }
+}
+
+.error {
+  background-color: red !Important;
 }
 
 @media (max-width: 864px) {

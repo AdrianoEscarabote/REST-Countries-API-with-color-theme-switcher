@@ -27,7 +27,7 @@ export default function useFetch(url: string) {
     axios
     .get(urlRegion)
     .then((response) => {
-      setData(response.data)
+      response.status === 404 ? console.log("deu erro") : setData(response.data)
     })
     .catch((err) => {
       setError(err)

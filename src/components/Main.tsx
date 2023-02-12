@@ -14,14 +14,11 @@ interface Data {
 };
 
 export const Main = () => {
-
   const effectRan = useRef(false);
-
   let objData: Data[] = [];
-    
   const {data, loading, error, refetch} = useFetch("https://restcountries.com/v3.1/all");
-  
   const [urlRegion, setUrlRegion] = useState("");
+  const [errorClass, setErrorClass] = useState("");
 
   useEffect(() => {
     if (effectRan.current === true) {
@@ -32,30 +29,31 @@ export const Main = () => {
           refetch(`https://restcountries.com/v3.1/region/${urlRegion}`);
         }
       } catch (e) {
-        console.log(e)
+        console.log(error)
       }
-    }
+    };
     return () => {
       effectRan.current = true;
-    }
+    };
   }, [urlRegion]);
 
   const [urlNameFilter, setUrlNameFilter] = useState("")
 
   useEffect(() => {
     if (effectRan.current === true) {
-      console.log(urlNameFilter)
-      refetch(`https://restcountries.com/v3.1/name/${urlNameFilter}`)
-    } 
+      if (["", " "].includes(urlNameFilter)) {
+        refetch(`https://restcountries.com/v3.1/all`)
+      } else {
+        refetch(`https://restcountries.com/v3.1/name/${urlNameFilter}`)
+        data.status === 404 ? console.log("deu erro!") : console.log("deu certo!")
+      }
+    };
     return () => {
       effectRan.current = true;
-    }
+    };
   }, [urlNameFilter]);
-    
-  if (loading !== true) {
-    objData = data
-  } 
-  if (error) return <h1>{error}</h1>
+      
+  data?.status === 404 ? setErrorClass("error") : objData = data;
 
   return (
     <MainStyled>
@@ -77,7 +75,7 @@ export const Main = () => {
             <option value="Oceania">Oceania</option>
           </select>
         </form>
-        <section id="countries">
+        <section id="countries" className={errorClass}>
           {
             objData && <Country data={objData} />
           } 

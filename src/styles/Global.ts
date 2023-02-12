@@ -87,6 +87,19 @@ select {
 body {
   background: ${({ theme }) => theme.body};
   color: ${({ theme }) => theme.text};
+
+  &::-webkit-scrollbar {
+    width: 0.75rem;              
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;        
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.text};    
+    border-radius: 0.375rem;    
+  }
 }
 
 .sr-only {
