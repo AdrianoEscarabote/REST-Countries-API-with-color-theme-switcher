@@ -3,6 +3,7 @@ import Country from "./Country";
 import useFetch from "../custom/useFetch";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+import exclamationMark from "../assets/exclamation-mark.png";
 
 interface Data {
   name: {common: string},
@@ -51,7 +52,9 @@ export const Main = () => {
     };
   }, [urlNameFilter]);
     
-  data?.status === 404 ? console.log("entrei aqui") : objData = data    
+  if (!error) {
+    objData = data    
+  }
   
   return (
     <MainStyled>
@@ -79,6 +82,14 @@ export const Main = () => {
           {
             objData && <Country data={objData} />
           } 
+          {
+            error ? 
+            <div className="error"> 
+              <img src={exclamationMark} alt="" aria-hidden="true" />
+              <p className="error_p">We couldn't find the country with the name {urlNameFilter} !</p> 
+            </div> 
+            : null
+          }
         </section>
       </div>
     </MainStyled>

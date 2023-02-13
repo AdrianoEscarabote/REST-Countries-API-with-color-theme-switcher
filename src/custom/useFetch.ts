@@ -29,12 +29,12 @@ export default function useFetch(url: string) {
     .then((response) => {
       console.log(response.data)
       setData(response.data)
+      setError("")
     })
     .catch((err) => {
-      if (err.response.status) {
-        console.log("acho que posso controlar daqui")
-      }
       setError(err.response.status)
+      console.log(err)
+      return
     })
     .finally(() => {
       setLoading(false)
