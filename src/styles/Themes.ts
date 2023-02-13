@@ -1,5 +1,9 @@
 import iconMoon from "../assets/moon-solid.svg";
 import iconSun from "../assets/icon-sun.svg";
+import iconArrow from "../assets/icon-arrow.svg";
+import iconArrrowDown from "../assets/icon-arrow-up.svg";
+import iconArrowWhite from "../assets/icon-arrow-white-down.png";
+import iconArrowWhiteUp from "../assets/icon-arrow-white-up.png";
 
 export const lightTheme = {
   body: "#FAFAFA",
@@ -8,7 +12,9 @@ export const lightTheme = {
   headerShadow: "0px 2px 4px rgba(0, 0, 0, 0.0562443)",
   inputColor: "#FFFFFF",
   inputShadow: "0px 2px 9px rgba(0, 0, 0, 0.0532439)",
-  imgIconTheme: `${iconMoon}`
+  imgIconTheme: `${iconMoon}`,
+  icon: `${iconArrrowDown}`,
+  iconUp: `${iconArrow}`
 };
 
 export const darkTheme = {
@@ -18,5 +24,7 @@ export const darkTheme = {
   headerShadow: "0px 2px 4px rgba(0, 0, 0, 0.0562443)",
   inputColor: "#2B3844",
   inputShadow: "0px 2px 9px rgba(0, 0, 0, 0.0532439)",
-  imgIconTheme: `${iconSun}`
+  imgIconTheme: `${iconSun}`,
+  icon: `${iconArrowWhite}`,
+  iconUp: `${iconArrowWhiteUp}`
 };

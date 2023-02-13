@@ -5,7 +5,7 @@ export default function useFetch(url: string) {
 
   const [data, setData] = useState<any>(null)
   const [loading, setLoading] = useState<boolean>(false)
-  const [error, setError] = useState(null)
+  const [error, setError] = useState<string>("")
 
   useEffect(() => {
     setLoading(true)
@@ -27,10 +27,14 @@ export default function useFetch(url: string) {
     axios
     .get(urlRegion)
     .then((response) => {
-      response.status === 404 ? console.log("deu erro") : setData(response.data)
+      console.log(response.data)
+      setData(response.data)
     })
     .catch((err) => {
-      setError(err)
+      if (err.response.status) {
+        console.log("acho que posso controlar daqui")
+      }
+      setError(err.response.status)
     })
     .finally(() => {
       setLoading(false)

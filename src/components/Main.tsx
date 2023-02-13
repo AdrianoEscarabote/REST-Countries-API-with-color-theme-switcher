@@ -18,7 +18,8 @@ export const Main = () => {
   let objData: Data[] = [];
   const {data, loading, error, refetch} = useFetch("https://restcountries.com/v3.1/all");
   const [urlRegion, setUrlRegion] = useState("");
-  const [errorClass, setErrorClass] = useState("");
+  const [selectClass, setSelectClass] = useState("");
+  const [urlNameFilter, setUrlNameFilter] = useState("")
 
   useEffect(() => {
     if (effectRan.current === true) {
@@ -37,24 +38,21 @@ export const Main = () => {
     };
   }, [urlRegion]);
 
-  const [urlNameFilter, setUrlNameFilter] = useState("")
-
   useEffect(() => {
     if (effectRan.current === true) {
-      if (["", " "].includes(urlNameFilter)) {
+      if ([""].includes(urlNameFilter)) {
         refetch(`https://restcountries.com/v3.1/all`)
       } else {
         refetch(`https://restcountries.com/v3.1/name/${urlNameFilter}`)
-        data.status === 404 ? console.log("deu erro!") : console.log("deu certo!")
       }
     };
     return () => {
       effectRan.current = true;
     };
   }, [urlNameFilter]);
-      
-  data?.status === 404 ? setErrorClass("error") : objData = data;
-
+    
+  data?.status === 404 ? console.log("entrei aqui") : objData = data    
+  
   return (
     <MainStyled>
       <div className="container">
@@ -64,7 +62,9 @@ export const Main = () => {
               setUrlNameFilter(e.currentTarget.value)
             }} name="name" placeholder="Search for a country…" id="name"/>  
           </label>
-          <select onChange={(e) => {
+          <select onClick={() => 
+            selectClass === "open" ? setSelectClass("") : setSelectClass("open")
+          } className={selectClass} onChange={(e) => {
             setUrlRegion(e.currentTarget.selectedOptions[0].value)
           }}>
             <option defaultValue={"Filter by Region"} style={{display: "none"}}>Filter by Region</option>
@@ -75,7 +75,7 @@ export const Main = () => {
             <option value="Oceania">Oceania</option>
           </select>
         </form>
-        <section id="countries" className={errorClass}>
+        <section>
           {
             objData && <Country data={objData} />
           } 

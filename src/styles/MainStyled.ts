@@ -33,15 +33,20 @@ justify-content: center;
     }
     
     select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
       color: ${({ theme }) => theme.text};
       width: 100%;
       max-width: 200px;
       height: 56px;
       padding: 0px 19px 0px 24px;
-      background: ${({ theme }) => theme.inputColor};
+      background: url(${({ theme }) => theme.icon}) no-repeat ${({ theme }) => theme.inputColor};
+      background-position: 90% 15px;
     }
   }
 
+  section,
   #countries {
     margin: 48px 0px 0px 0px;
     display: flex;
@@ -53,8 +58,17 @@ justify-content: center;
   }
 }
 
+.open {
+  background: url(${({ theme }) => theme.iconUp}) no-repeat ${({ theme }) => theme.inputColor} !Important;
+  background-position: 90% 15px !Important;
+}
+
 .error {
+  #countries {
+    display: none;
+  }
   background-color: red !Important;
+  display: flex;
 }
 
 @media (max-width: 864px) {
@@ -87,5 +101,4 @@ justify-content: center;
   #countries {
     justify-content: center !Important;
   }
-}
-`
+}`
