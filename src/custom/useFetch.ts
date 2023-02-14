@@ -11,34 +11,49 @@ export default function useFetch(url: string) {
     setLoading(true)
     axios
     .get(url)
-    .then((response) => {
+    .then(response => {
       setData(response.data)
     })
-    .catch((err) => {
+    .catch(err => {
       setError(err)
+      return;
     })
     .finally(() => {
       setLoading(false)
     })
-  }, [url])
+  }, [url]);
 
-  const refetch = (urlRegion: string) => {
-    setLoading(true)
+  const refetch = (urlName: string | boolean, urlRegion: string | boolean) => {
+
+    setLoading(true);
+    let url: string = ""
+
+    if (urlRegion) {
+      url = `https://restcountries.com/v3.1/region/${urlRegion}`;
+    } else if (urlName) {
+      url = `https://restcountries.com/v3.1/name/${urlName}`
+    } else {
+      url = "https://restcountries.com/v3.1/all"
+    }
+
     axios
-    .get(urlRegion)
-    .then((response) => {
-      console.log(response.data)
-      setData(response.data)
-      setError("")
+    .get(url)
+    .then(response => {
+      if (response.status === 404) {
+        setError("Não foi encontrado nenhum país com esse nome");
+      } else {
+        setData(response.data);
+        setError("");
+      }
     })
-    .catch((err) => {
-      setError(err.response.status)
-      console.log(err)
-      return
+    .catch(err => {
+      setError(err.response.status);
     })
     .finally(() => {
-      setLoading(false)
-    })
+      setLoading(false);
+    });
+    
   }
+
   return { data, loading, error, refetch}
 }

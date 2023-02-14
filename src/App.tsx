@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './styles/Themes';
 import { BrowserRouter } from 'react-router-dom';
+import { Country } from './components/Country';
 
 function App() {
 
@@ -19,7 +20,8 @@ function App() {
       <GlobalStyle />
       <Header themeToggler={themeToggler}/>
       <BrowserRouter>
-        <Main />
+        {/* <Main />  */}
+        <Country nameToSearch="Brazil"/>
       </BrowserRouter>
     </ThemeProvider>
   );

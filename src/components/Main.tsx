@@ -1,5 +1,5 @@
 import { MainStyled } from "../styles/MainStyled";
-import Country from "./Country";
+import Country from "./Countries";
 import useFetch from "../custom/useFetch";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
@@ -24,15 +24,11 @@ export const Main = () => {
 
   useEffect(() => {
     if (effectRan.current === true) {
-      try {
-        if (urlRegion === "") {
-          refetch("https://restcountries.com/v3.1/all")
-        } else {
-          refetch(`https://restcountries.com/v3.1/region/${urlRegion}`);
-        }
-      } catch (e) {
-        console.log(error)
-      }
+      if (urlRegion === "") {
+        refetch(false, false) 
+      } else {
+        refetch(false, `${urlRegion}`);
+      } 
     };
     return () => {
       effectRan.current = true;
@@ -42,9 +38,9 @@ export const Main = () => {
   useEffect(() => {
     if (effectRan.current === true) {
       if ([""].includes(urlNameFilter)) {
-        refetch(`https://restcountries.com/v3.1/all`)
+        refetch(false, false)
       } else {
-        refetch(`https://restcountries.com/v3.1/name/${urlNameFilter}`)
+        refetch(`${urlNameFilter}`, false)        
       }
     };
     return () => {
