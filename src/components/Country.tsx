@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import useFetch from "../custom/useFetch"
 import { CountryStyled } from "../styles/Country";
+import CurrencyCodes, { CurrencyCodeRecord } from 'currency-codes';
 
 interface objData {
   flags: {svg: string},
@@ -11,13 +12,13 @@ interface objData {
   region: string,
   subregion: string,
   capital: string,
-  currencies: "",
+  currencies: string[],
   languages: string[] | string
   borders: string[]
 }
 
 interface Data {
-  nameToSearch: string,
+  nameToSearch: string | null,
   objData?: objData[]
 }
 
@@ -31,6 +32,14 @@ const Img: React.FC<imgProps> = ({ src, alt }) => {
 }
 
 export const Country: React.FC<Data> = ({  nameToSearch })  => {
+
+  useEffect(() => {
+    if (nameToSearch) {
+      localStorage.setItem("nameToSearch", nameToSearch)
+    } else if (nameToSearch === null || localStorage.getItem("nameToSearch")) {
+      console.log(localStorage.getItem("nameToSearch"))
+    }
+  }, [])
     
   const [infos, setInfos] = useState<objData>({ 
     flags: {svg: ""},
@@ -40,11 +49,11 @@ export const Country: React.FC<Data> = ({  nameToSearch })  => {
     region: "",
     subregion: "",
     capital: "",
-    currencies: "",
+    currencies: [],
     languages: "",
     borders: []})
 
-  const {data} = useFetch(`https://restcountries.com/v3.1/name/${nameToSearch}`);
+  const {data} = useFetch(`https://restcountries.com/v3.1/name/${nameToSearch ? nameToSearch : localStorage.getItem("nameToSearch")}`);
 
   useEffect(() => {
     if (data && data.length > 0) {
@@ -57,13 +66,13 @@ export const Country: React.FC<Data> = ({  nameToSearch })  => {
         subregion: element.subregion,
         capital: element.capital,
         borders: element.borders,
-        currencies: element.currencies.BRL.name,
+        currencies: element.currencies,
         languages: element.languages.por
       }));
       setInfos(countryInfos[0]);
     }
   }, [data])
-  
+
   return (
     <>
       {
@@ -87,12 +96,12 @@ export const Country: React.FC<Data> = ({  nameToSearch })  => {
                   </ul>
                   <ul className="column2">
                     <li><p>Top Level Domain <span>{}</span> </p></li>
-                    <li><p>Currencies <span>{infos.currencies}</span></p></li>
+                    <li><p>Currencies <span>{JSON.stringify(infos.currencies)}</span></p></li>
                     <li><p>Languages <span>{infos.languages}</span></p></li>
                   </ul>
                 </div>
                 <div className="borders">
-                  <p>Borders: { infos.borders.map((item, index) => <span key={index}>{item}</span>) }</p>
+                  <p>Borders: { infos.borders ? infos.borders.map((item, index) => <span key={index}>{item}</span>) : "nada" }</p>
                 </div>
               </div>
             </div>

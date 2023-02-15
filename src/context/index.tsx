@@ -1,34 +1,38 @@
-const oi = () => {
-  return <h1>oi</h1>
+import React, { createContext, useContext, ReactNode, useState } from "react";
+
+interface NameContextProps {
+  name: null | string,
 }
 
-/* import React, { createContext, useContext, ReactNode, useState } from "react";
+interface UpdateNameContextProps {
+  setName: (name: string | null) => void,
+}
 
-interface nameToSearchProps {
+interface NameToSearchProps {
   value: string | null,
-  children: ReactNode
+  children: ReactNode,
 }
 
-const NameContext = React.createContext(null);
-const UpdateNameContext = React.createContext(null);
+const NameContext = createContext<NameContextProps>({ name: null });
+const UpdateNameContext = createContext<UpdateNameContextProps>({ setName: () => {} });
 
-const useName = () => {
-  return useContext(nameContext)
-} 
+export const useName = () => {
+  return useContext(NameContext).name;
+};
 
-const setName = () => {
-  return useContext(updateNameContext)
-}
+export const useSetName = () => {
+  return useContext(UpdateNameContext).setName;
+};
 
-export const nameToSearch: React.FC<nameToSearchProps> = ({ value, children }) => {
+export const NameToSearch: React.FC<NameToSearchProps> = ({ value, children }) => {
 
-  const [name, setName] = useState(value);
+  const [name, setName] = useState<string | null>(value);
 
   return (
-    <NameContext.Provider value={name}>
-      <UpdateNameContext value={setName}>
+    <NameContext.Provider value={{ name }}>
+      <UpdateNameContext.Provider value={{ setName }}>
         {children}
-      </UpdateNameContext>
+      </UpdateNameContext.Provider>
     </NameContext.Provider>
   )
-} */
+};

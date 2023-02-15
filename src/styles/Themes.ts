@@ -4,6 +4,8 @@ import iconArrow from "../assets/icon-arrow.svg";
 import iconArrrowDown from "../assets/icon-arrow-up.svg";
 import iconArrowWhite from "../assets/icon-arrow-white-down.png";
 import iconArrowWhiteUp from "../assets/icon-arrow-white-up.png";
+import iconArrowLinkWhite from "../assets/arrow-left-white.png";
+import iconArrowLinkBlack from "../assets/arrow-left-black.png";
 
 export const lightTheme = {
   body: "#FAFAFA",
@@ -14,7 +16,8 @@ export const lightTheme = {
   inputShadow: "0px 2px 9px rgba(0, 0, 0, 0.0532439)",
   imgIconTheme: `${iconMoon}`,
   icon: `${iconArrrowDown}`,
-  iconUp: `${iconArrow}`
+  iconUp: `${iconArrow}`,
+  iconArrow: `${iconArrowLinkBlack}`
 };
 
 export const darkTheme = {
@@ -26,5 +29,6 @@ export const darkTheme = {
   inputShadow: "0px 2px 9px rgba(0, 0, 0, 0.0532439)",
   imgIconTheme: `${iconSun}`,
   icon: `${iconArrowWhite}`,
-  iconUp: `${iconArrowWhiteUp}`
+  iconUp: `${iconArrowWhiteUp}`,
+  iconArrow: `${iconArrowLinkWhite}`
 };

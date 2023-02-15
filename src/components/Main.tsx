@@ -1,9 +1,9 @@
 import { MainStyled } from "../styles/MainStyled";
-import Country from "./Countries";
+import Countries from "./Countries";
 import useFetch from "../custom/useFetch";
-import { Routes, Route } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import exclamationMark from "../assets/exclamation-mark.png";
+import { useSetName } from "../context/index";
 
 interface Data {
   name: {common: string},
@@ -14,13 +14,17 @@ interface Data {
   index: number
 };
 
-export const Main = () => {
+interface MainProps {
+  setName: React.Dispatch<React.SetStateAction<string>>
+}
+
+export const Main: React.FC<MainProps> = ({ setName }) => {
   const effectRan = useRef(false);
   let objData: Data[] = [];
-  const {data, loading, error, refetch} = useFetch("https://restcountries.com/v3.1/all");
+  const {data, error, refetch} = useFetch("https://restcountries.com/v3.1/all");
   const [urlRegion, setUrlRegion] = useState("");
   const [selectClass, setSelectClass] = useState("");
-  const [urlNameFilter, setUrlNameFilter] = useState("")
+  const [urlNameFilter, setUrlNameFilter] = useState("");
 
   useEffect(() => {
     if (effectRan.current === true) {
@@ -51,10 +55,11 @@ export const Main = () => {
   if (!error) {
     objData = data    
   }
-  
+
   return (
     <MainStyled>
       <div className="container">
+
         <form noValidate>
           <label htmlFor="name" aria-label="Enter the name of the city you want to find">
             <input type="text" value={urlNameFilter} onChange={(e) => {
@@ -76,7 +81,7 @@ export const Main = () => {
         </form>
         <section>
           {
-            objData && <Country data={objData} />
+            objData && <Countries setName={setName} data={objData} />
           } 
           {
             error ? 
