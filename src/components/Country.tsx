@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import useFetch from "../custom/useFetch"
 import { CountryStyled } from "../styles/Country";
 
@@ -69,7 +70,7 @@ export const Country: React.FC<Data> = ({  nameToSearch })  => {
         infos &&
         <CountryStyled>
           <div className="container">
-            <a href="#">back</a>
+            <Link to="/">Back</Link>
             <div className="content">
               <div className="flag">
                 <Img src={infos.flags.svg} alt="" aria-hidden="flag of the country" />

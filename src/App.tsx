@@ -4,7 +4,7 @@ import { Main } from './components/Main';
 import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './styles/Themes';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Country } from './components/Country';
 
 function App() {
@@ -20,8 +20,10 @@ function App() {
       <GlobalStyle />
       <Header themeToggler={themeToggler}/>
       <BrowserRouter>
-        {/* <Main />  */}
-        <Country nameToSearch="Brazil"/>
+        <Routes>
+          <Route path='/' element={<Main />} />
+          <Route path='/country' element={<Country nameToSearch="Brazil"/>} />
+        </Routes>
       </BrowserRouter>
     </ThemeProvider>
   );
