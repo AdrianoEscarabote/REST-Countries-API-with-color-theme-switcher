@@ -25,7 +25,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<Main setName={setName} />} />
-            <Route path='/country' element={<Country nameToSearch={name}/>} />
+            <Route path='/country' element={<Country setName={setName} nameToSearch={name}/>} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

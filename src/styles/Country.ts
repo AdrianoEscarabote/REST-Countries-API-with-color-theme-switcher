@@ -12,7 +12,7 @@ margin-top: 5rem;
   width: 100%;
   padding: 1.25rem 5rem;
 
-  a {
+  .link_back {
     position: absolute;
     top: 0rem;
     box-shadow: 0rem 0rem 0.4375rem rgba(0, 0, 0, 0.293139);
@@ -82,7 +82,9 @@ margin-top: 5rem;
           flex-wrap: wrap;
           gap: 0.625rem;
           
-          span {
+          a {
+            text-decoration: none;
+            color: unset; 
             width: 6rem;
             height: 1.75rem; 
             border-radius: 0.125rem;
