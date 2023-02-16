@@ -17,7 +17,9 @@ export const lightTheme = {
   imgIconTheme: `${iconMoon}`,
   icon: `${iconArrrowDown}`,
   iconUp: `${iconArrow}`,
-  iconArrow: `${iconArrowLinkBlack}`
+  iconArrow: `${iconArrowLinkBlack}`,
+  flagShadow: "0px 0px 14px 4px rgba(0, 0, 0, 0.0294384)",
+  borderShadow: "0px 0px 4px 1px rgba(0, 0, 0, 0.104931)",
 };
 
 export const darkTheme = {
@@ -30,5 +32,7 @@ export const darkTheme = {
   imgIconTheme: `${iconSun}`,
   icon: `${iconArrowWhite}`,
   iconUp: `${iconArrowWhiteUp}`,
-  iconArrow: `${iconArrowLinkWhite}`
+  iconArrow: `${iconArrowLinkWhite}`,
+  flagShadow: "0px 0px 14px 4px rgba(0, 0, 0, 0.0294384)",
+  borderShadow: "0px 0px 4px 1px rgba(0, 0, 0, 0.104931)"
 };

@@ -4,6 +4,7 @@ import useFetch from "../custom/useFetch"
 import { CountryStyled } from "../styles/Country";
 import { useSetName } from "../context";
 import CurrencyCodes, { CurrencyCodeRecord } from 'currency-codes';
+import axios, { Axios } from "axios";
 
 interface objData {
   flags: {svg: string},
@@ -34,6 +35,14 @@ const Img: React.FC<imgProps> = ({ src, alt }) => {
   return <img src={src} alt={alt} />
 }
 
+interface Country {
+  nativeName: string,
+}
+
+interface ApiResponse {
+  nativeName: string
+}
+
 export const Country: React.FC<Data> = ({ setName, nameToSearch })  => {
 
   useEffect(() => {
@@ -57,7 +66,7 @@ export const Country: React.FC<Data> = ({ setName, nameToSearch })  => {
     languages: "",
     borders: []})
 
-  const {data, refetch} = useFetch(`https://restcountries.com/v3.1/name/${nameToSearch ? nameToSearch : localStorage.getItem("nameToSearch")}`);
+  const {data} = useFetch(`https://restcountries.com/v3.1/name/${nameToSearch ? nameToSearch : localStorage.getItem("nameToSearch")}`);
 
   useEffect(() => {
     if (data && data.length > 0) {
@@ -75,6 +84,7 @@ export const Country: React.FC<Data> = ({ setName, nameToSearch })  => {
         languages: element.languages,
       }));
       setInfos(countryInfos[0]);
+      setBorderList(countryInfos[0].borders)
     }
   }, [data])
 
@@ -85,18 +95,32 @@ export const Country: React.FC<Data> = ({ setName, nameToSearch })  => {
     }
   }
 
-  const list = []
+  const [bordersCountries, setBordersCountries] = useState<Country[]>([])
+  const [borderList, setBorderList] = useState<string[]>(infos.borders)
 
-  
-  /* useEffect(() => {
-    refetch("https://restcountries.com/v2/alpha?codes={code},{code},{code}")
-  }, []) */
+  useEffect(() => {
+    const getBorderCountryData = async () => {
+      const countryDataList: Country[] = [];
+      for (const border of borderList) {
+        try {
+          const response = await axios.get<ApiResponse>(`https://restcountries.com/v2/alpha/${border}`);
+          countryDataList.push({ nativeName: response.data.nativeName });
+        } catch (error) {
+          console.error(error);
+        }
+      }
+      setBordersCountries(countryDataList);
+    };
+    if (borderList) {
+      getBorderCountryData();
+    }
+  }, [borderList]);
 
   return (
     <>
       {
         infos &&
-        <CountryStyled>
+        <CountryStyled className="singleCountry">
           <div className="container">
             <Link className="link_back" to="/">Back</Link>
             <div className="content">
@@ -120,7 +144,7 @@ export const Country: React.FC<Data> = ({ setName, nameToSearch })  => {
                   </ul>
                 </div>
                 <div className="borders">
-                  <p>Borders: { infos.borders ? infos.borders.map((item, index) => <Link to="/country" onClick={handleClick} key={index}>{item}</Link>) : "No borders..." }</p>
+                  <p>Borders: { bordersCountries && borderList ? bordersCountries.map((country, index) => <Link to="/country" onClick={handleClick} key={index}>{country.nativeName}</Link>) : "No borders..." }</p>
                 </div>
               </div>
             </div>

@@ -10,31 +10,42 @@ export const HeaderStyled = styled.header`
 
   .container {
     width: 100%;
-    max-width: 1440px;
-    padding: 20px 80px;
+    max-width: 90rem;
+    padding: 1.25rem 5rem;
     display: flex;
     justify-content: space-between;
 
     h1 {
       font-weight: 800;
-      font-size: 24px;
-      line-height: 33px;
+      font-size: 1.5rem;
+      line-height: 2.0625rem;
     }
 
     button {
       font-weight: 600;
-      font-size: 16px;
-      line-height: 22px;
-      width: 108px;
-      height: 22px;
+      font-size: 1rem;
+      line-height: 1.375rem;
+      width: 6.75rem;
+      height: 1.375rem;
       text-align: right;
       background: url(${({ theme }) => theme.imgIconTheme}) no-repeat left;
     }
   }
 
-  @media (max-width: 864px) {
+  @media (max-width: 54rem) {
     .container {
-      padding: 20px 30px;
+      padding: 1.25rem 1.25rem;
+      
+      h1 {
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+      }
+
+      button {
+        font-size: 0.75rem;
+        line-height: 1rem;
+        background-position: 1.25rem;
+      }
     }
   }
 `
