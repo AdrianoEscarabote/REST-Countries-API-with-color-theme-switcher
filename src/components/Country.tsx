@@ -48,8 +48,6 @@ export const Country: React.FC<Data> = ({ setName, nameToSearch })  => {
   useEffect(() => {
     if (nameToSearch) {
       localStorage.setItem("nameToSearch", nameToSearch)
-    } else if (nameToSearch === null || localStorage.getItem("nameToSearch")) {
-      console.log(localStorage.getItem("nameToSearch"))
     }
   }, [])
     

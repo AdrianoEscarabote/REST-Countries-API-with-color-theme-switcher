@@ -11,9 +11,10 @@ export const HeaderStyled = styled.header`
   .container {
     width: 100%;
     max-width: 90rem;
-    padding: 1.25rem 5rem;
+    padding: 1.4375rem 5rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     h1 {
       font-weight: 800;

@@ -7,7 +7,7 @@ import { useSetName } from "../context/index";
 
 interface Data {
   name: {common: string},
-  flags: {svg: string},
+  flags: {png: string},
   region: string,
   capital: string,  
   population: string,
@@ -66,7 +66,7 @@ export const Main: React.FC<MainProps> = ({ setName }) => {
               setUrlNameFilter(e.currentTarget.value)
             }} name="name" placeholder="Search for a country…" id="name"/>  
           </label>
-          <select onClick={() => 
+          <select name="region name" onClick={() => 
             selectClass === "open" ? setSelectClass("") : setSelectClass("open")
           } className={selectClass} onChange={(e) => {
             setUrlRegion(e.currentTarget.selectedOptions[0].value)

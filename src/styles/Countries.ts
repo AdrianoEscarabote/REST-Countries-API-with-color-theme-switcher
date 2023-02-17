@@ -8,14 +8,15 @@ height: 21rem;
 background: ${({ theme }) => theme.headerCountryBackground};
 box-shadow: 0rem 0rem 0.4375rem 0.125rem rgba(0, 0, 0, 0.0294384);
 border-radius: 0.3125rem;
-transition: 0.4s ease-in-out;
 
 &:hover {
   transform: scale(1.02);
 }
 
 &::focus {
-  border: 1px solid #000; 
+  a {
+    border: 0.0625rem solid #000; 
+  }
 }
 
 a {
@@ -23,18 +24,16 @@ a {
   color: unset;
   display: grid;
   grid-template-rows: 50% 50%;
-  gap: 0.9375rem;
 
   .img {
+    width: 100%; 
     height: 10rem;
-    width: 16.5rem;
-    width: 100%:
-    border-radius: 0.3125rem;
-    overflow: hidden;
+    border-radius: 0.3125rem 0.3125rem 0rem 0rem;
 
     img {
-      width: 100%:
-      height: 100%;
+      width: 100%;  
+      height: 10rem;
+      border-radius: 0.3125rem 0.3125rem 0rem 0rem;
     }
   }
 
@@ -50,6 +49,9 @@ a {
       list-style: none;
       margin: 0;
       padding: 0rem 1.5rem 1.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
     
       p {
         font-weight: 600;

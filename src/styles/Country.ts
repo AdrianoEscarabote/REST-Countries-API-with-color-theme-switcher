@@ -91,7 +91,7 @@ animation: country_animation 0.8s ease-in-out;
           a {
             text-decoration: none;
             color: unset; 
-            padding: 2px 10px;
+            padding: 0.125rem 0.625rem;
             height: 1.75rem; 
             border-radius: 0.125rem;
             display: grid;
@@ -118,15 +118,15 @@ animation: country_animation 0.8s ease-in-out;
   }
 }
 
-@media (max-width: 1298px) {
+@media (max-width: 81.125rem) {
   .content {
     img {
-      width: 460px !Important;
+      width: 28.75rem !Important;
     }
   }
 }
 
-@media (max-width: 1120px) {
+@media (max-width: 70rem) {
   .content {
     margin-top: 2rem !Important; 
     display: flex !Important;
@@ -136,47 +136,48 @@ animation: country_animation 0.8s ease-in-out;
   }
 }
 
-@media (max-width: 865px) {
+@media (max-width: 54.0625rem) {
   .flag {
-    margin: 40px 0px 40px 0px !Important;
+    margin: 2.5rem 0rem 2.5rem 0rem !Important;
 
     img {
       height: unset !Important;
     }
   } 
   .details {
-    max-width: 468px;
+    max-width: 29.25rem;
 
     .info {
       display: flex !Important;
       flex-direction: column !Important;
-      gap: 0px !Important;
+      gap: 0rem !Important;
 
       .column {
-        margin: 10px 0px 0px 0px;
+        margin: 0.625rem 0rem 0rem 0rem;
       }
 
       .column2 {
-        margin: 0px 0px 20px 0px;
+        margin: 0rem 0rem 1.25rem 0rem;
       }
     }
   }
   .container {
-    padding: 10px 30px; 
+    padding: 0.625rem 1.875rem; 
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 26.25rem) {
+  margin-top: 2rem !Important;
+
   .container {
-    padding: 10px 20px;
+    padding: 0.625rem 1.25rem;
   }
 
   .flag {
-    margin: 40px 0px 40px 0px;
+    margin: 2.5rem 0rem 2.5rem 0rem;
 
     img {
       height: auto !Important;
     }
   }
-}
-`
+}`

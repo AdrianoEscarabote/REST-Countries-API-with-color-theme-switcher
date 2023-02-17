@@ -8,8 +8,8 @@ justify-content: center;
 
 .container {
   width: 100%;
-  max-width: 1440px;
-  padding: 20px 80px;
+  max-width: 90rem;
+  padding: 3.0625rem 5rem 1.25rem 5rem;
 
   form {
     width: 100%;
@@ -18,17 +18,17 @@ justify-content: center;
     justify-content: space-between;
     
     input {
-      width: 480px;
-      height: 56px;
+      width: 25.3125rem;
+      height: 3.5rem;
       box-shadow: ${({ theme }) => theme.inputShadow};
       color: ${({ theme }) => theme.text};
-      border-radius: 5px;
+      border-radius: 0.3125rem;
       outline: transparent; 
       font-weight: 400;
-      font-size: 14px;
-      line-height: 20px;
-      padding-left: 74px;
-      background: ${({ theme }) => theme.inputColor} url(${iconSearch}) 30px 20px no-repeat;
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+      padding-left: 4.625rem;
+      background: ${({ theme }) => theme.inputColor} url(${iconSearch}) 1.875rem 1.25rem no-repeat;
       border: transparent;
     }
     
@@ -38,23 +38,37 @@ justify-content: center;
       -moz-appearance: none;
       color: ${({ theme }) => theme.text};
       width: 100%;
-      max-width: 200px;
-      height: 56px;
-      padding: 0px 19px 0px 24px;
+      max-width: 12.5rem;
+      height: 3.5rem;
+      padding: 0rem 1.1875rem 0rem 1.5rem;
       background: url(${({ theme }) => theme.icon}) no-repeat ${({ theme }) => theme.inputColor};
-      background-position: 90% 15px;
+      background-size: 0.75rem;
+      background-position: 90% 50%;
+      border-radius: 0.3125rem;
+      border: 0px; 
+      box-shadow: ${({ theme }) => theme.selectShadow};
+      
+      option {
+        border-radius: 10px !Important;
+        border: 0px;
+        box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.0532439);
+      }
+
+      &::focus {
+        border: 1px solid black;
+      }
     }
   }
 
   section,
   #countries {
-    margin: 48px 0px 0px 0px;
+    margin: 1.5rem 0rem 0rem 0rem;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 74px; 
+    gap: 4.625rem; 
     justify-content: space-between;
-    padding: 0px;
+    padding: 0rem;
   }
 
   #countries {
@@ -64,7 +78,8 @@ justify-content: center;
 
 .open {
   background: url(${({ theme }) => theme.iconUp}) no-repeat ${({ theme }) => theme.inputColor} !Important;
-  background-position: 90% 15px !Important;
+  background-position: 90% 50% !Important;
+  background-size: 0.75rem !Important; 
 }
 
 .error {
@@ -73,7 +88,7 @@ justify-content: center;
   justify-content: center;
   width: 100%;
   flex-direction: column;
-  gap: 25px;
+  gap: 1.5625rem;
   animation: errorAnimation 1s ease-in-out;
 
   img {
@@ -82,53 +97,53 @@ justify-content: center;
 
   .error_p {
     text-align: center;
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: 700;
-    max-width: 420px;
+    max-width: 26.25rem;
   }
 }
 
-@media (max-width: 864px) {
+@media (max-width: 54rem) {
   .container {
-    padding: 20px 20px;
+    padding: 1.25rem 1.25rem;
   }
   #countries {
-    gap: 25px !Important; 
+    gap: 1.5625rem !Important; 
   }
   form {
     flex-direction: column;
     align-items: flex-start !Important;
-    gap: 40px;
+    gap: 2.5rem;
     width: 100%;
     
     label {
       input {
         width: 100% !Important;
         max-width: unset;
-        height: 48px;
-        font-size: 12px;
+        height: 3rem;
+        font-size: 0.75rem;
       }
     }
   }
 }
 
-@media (max-width: 586px) {
+@media (max-width: 36.625rem) {
   section {
-    margin-top: 32px !Important;
+    margin-top: 2rem !Important;
   }
 
   form {
     input {
-      background-position: 15px !Important;
-      padding-left: 46px !Important;
+      background-position: 0.9375rem !Important;
+      padding-left: 2.875rem !Important;
     }
   }
 }
 
-@media (max-width: 612px) {
+@media (max-width: 38.25rem) {
   #countries {
     justify-content: center !Important;
-    gap: 40px !Important;
+    gap: 2.5rem !Important;
   }
 }
 
@@ -151,6 +166,4 @@ justify-content: center;
       opacity: 1;
     }
   }
-}
-
-`
+}`

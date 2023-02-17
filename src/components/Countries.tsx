@@ -5,7 +5,7 @@ import { CountriesStyled } from "../styles/Countries";
 
 interface Data {
   name: { common: string },
-  flags: {svg: string},
+  flags: {png: string},
   region: string,
   capital: string,  
   population: string,
@@ -33,7 +33,7 @@ const Countries: FunctionComponent<CountryProps> = ({ setName, data }) => {
             <CountriesStyled key={index}>
               <Link to="/country" onClick={handleClick}>
                 <div className="img">
-                  <img src={element.flags.svg} alt="" aria-hidden="true" />
+                  <img src={element.flags.png} alt="" aria-hidden="true" />
                 </div>
                 
                 <div className="text">
