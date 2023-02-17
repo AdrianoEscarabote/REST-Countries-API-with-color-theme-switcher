@@ -3,7 +3,6 @@ import Countries from "./Countries";
 import useFetch from "../custom/useFetch";
 import { useEffect, useRef, useState } from "react";
 import exclamationMark from "../assets/exclamation-mark.png";
-import { useSetName } from "../context/index";
 
 interface Data {
   name: {common: string},
@@ -66,7 +65,8 @@ export const Main: React.FC<MainProps> = ({ setName }) => {
               setUrlNameFilter(e.currentTarget.value)
             }} name="name" placeholder="Search for a country…" id="name"/>  
           </label>
-          <select name="region name" onClick={() => 
+          <label htmlFor="region"></label>
+          <select id="region" name="region" onClick={() => 
             selectClass === "open" ? setSelectClass("") : setSelectClass("open")
           } className={selectClass} onChange={(e) => {
             setUrlRegion(e.currentTarget.selectedOptions[0].value)

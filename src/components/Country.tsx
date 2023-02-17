@@ -1,10 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useFetch from "../custom/useFetch"
 import { CountryStyled } from "../styles/Country";
-import { useSetName } from "../context";
-import CurrencyCodes, { CurrencyCodeRecord } from 'currency-codes';
-import axios, { Axios } from "axios";
+import axios from "axios";
 
 interface objData {
   flags: {svg: string},

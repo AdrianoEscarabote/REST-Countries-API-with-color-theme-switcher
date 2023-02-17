@@ -1,6 +1,5 @@
-import {FunctionComponent, SetStateAction } from "react"
+import {FunctionComponent } from "react"
 import { Link } from "react-router-dom";
-import { useName, useSetName } from "../context";
 import { CountriesStyled } from "../styles/Countries";
 
 interface Data {

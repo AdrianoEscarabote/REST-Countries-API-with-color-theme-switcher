@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { HeaderStyled } from "../styles/Header";
 
 interface HeaderProps {
