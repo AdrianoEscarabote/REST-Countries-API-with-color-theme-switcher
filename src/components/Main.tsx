@@ -65,19 +65,20 @@ export const Main: React.FC<MainProps> = ({ setName }) => {
               setUrlNameFilter(e.currentTarget.value)
             }} name="name" placeholder="Search for a country…" id="name"/>  
           </label>
-          <label htmlFor="region"></label>
-          <select id="region" name="region" onClick={() => 
-            selectClass === "open" ? setSelectClass("") : setSelectClass("open")
-          } className={selectClass} onChange={(e) => {
-            setUrlRegion(e.currentTarget.selectedOptions[0].value)
-          }}>
-            <option defaultValue={"Filter by Region"} style={{display: "none"}}>Filter by Region</option>
-            <option value="Africa">Africa</option>
-            <option value="America">America</option>
-            <option value="Asia">Asia</option>
-            <option value="Europe">Europe</option>
-            <option value="Oceania">Oceania</option>
-          </select>
+          <label htmlFor="region">
+            <select id="region" name="region" onClick={() => 
+              selectClass === "open" ? setSelectClass("") : setSelectClass("open")
+            } className={selectClass} onChange={(e) => {
+              setUrlRegion(e.currentTarget.selectedOptions[0].value)
+            }}>
+              <option defaultValue={"Filter by Region"} style={{display: "none"}}>Filter by Region</option>
+              <option value="Africa">Africa</option>
+              <option value="America">America</option>
+              <option value="Asia">Asia</option>
+              <option value="Europe">Europe</option>
+              <option value="Oceania">Oceania</option>
+            </select>
+          </label>
         </form>
         <section>
           {

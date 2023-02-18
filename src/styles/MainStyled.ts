@@ -31,33 +31,39 @@ justify-content: center;
       background: ${({ theme }) => theme.inputColor} url(${iconSearch}) 1.875rem 1.25rem no-repeat;
       border: transparent;
     }
-    
-    select {
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      color: ${({ theme }) => theme.text};
-      width: 100%;
-      max-width: 12.5rem;
-      height: 3.5rem;
-      padding: 0rem 1.1875rem 0rem 1.5rem;
-      background: url(${({ theme }) => theme.icon}) no-repeat ${({ theme }) => theme.inputColor};
-      background-size: 0.75rem;
-      background-position: 90% 50%;
-      border-radius: 0.3125rem;
-      border: 0px; 
-      box-shadow: ${({ theme }) => theme.selectShadow};
-      
-      option {
-        border-radius: 10px !Important;
-        border: 0px;
-        box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.0532439);
-      }
 
-      &::focus {
-        border: 1px solid black;
+    label {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        color: ${({ theme }) => theme.text};
+        width: 100%;
+        max-width: 12.5rem;
+        height: 3.5rem;
+        padding: 0rem 1.1875rem 0rem 1.5rem;
+        background: url(${({ theme }) => theme.icon}) no-repeat ${({ theme }) => theme.inputColor};
+        background-size: 0.75rem;
+        background-position: 90% 50%;
+        border-radius: 0.3125rem;
+        border: 0px; 
+        box-shadow: ${({ theme }) => theme.selectShadow};
+        
+        option {
+          border-radius: 10px !Important;
+          border: 0px;
+          box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.0532439);
+        }
+  
+        &::focus {
+          border: 1px solid black;
+        }
       }
     }
+    
   }
 
   section,
@@ -104,6 +110,9 @@ justify-content: center;
 }
 
 @media (max-width: 54rem) {
+  label {
+    justify-content: flex-start !Important;
+  }
   .container {
     padding: 1.25rem 1.25rem;
   }

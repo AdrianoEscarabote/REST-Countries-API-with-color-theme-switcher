@@ -5,7 +5,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 margin-top: 5rem;
-animation: country_animation 0.8s ease-in-out;
+animation: country_animation 1.2s ease-in-out;
 
 .container {
   position: relative;
