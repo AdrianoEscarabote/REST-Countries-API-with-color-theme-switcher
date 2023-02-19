@@ -32,7 +32,7 @@ justify-content: center;
       border: transparent;
     }
 
-    label {
+    .label_region {
       display: flex;
       justify-content: flex-end;
       width: 100%;

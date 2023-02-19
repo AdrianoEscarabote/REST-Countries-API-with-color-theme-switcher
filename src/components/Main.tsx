@@ -65,7 +65,8 @@ export const Main: React.FC<MainProps> = ({ setName }) => {
               setUrlNameFilter(e.currentTarget.value)
             }} name="name" placeholder="Search for a country…" id="name"/>  
           </label>
-          <label htmlFor="region">
+
+          <label className="label_region" htmlFor="region" aria-label="select the region you want">
             <select id="region" name="region" onClick={() => 
               selectClass === "open" ? setSelectClass("") : setSelectClass("open")
             } className={selectClass} onChange={(e) => {
